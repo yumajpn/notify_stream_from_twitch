@@ -1,6 +1,13 @@
 'use strict';
 const fs = require('fs');
 
+// http for glitch
+const http = require('http');
+http.createServer((request, response) => {
+    response.writeHead(200, { "Content-Type": "text/plain" });
+    response.end("active.\n");
+}).listen(4000);
+
 // Twitch
 const twitchConfig = JSON.parse(fs.readFileSync('./twitch_config.json', 'utf8'));
 const TwitchClient = require('twitch');
